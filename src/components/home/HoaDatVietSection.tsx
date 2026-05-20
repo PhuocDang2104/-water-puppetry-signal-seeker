@@ -11,25 +11,25 @@ const cards = [
     src: "/images/hoadatviet/hdv3.jpg",
     alt: "Sân khấu Hoa Đất Việt với rối nước và cờ hội",
     className:
-      "z-10 left-1/2 top-[13%] -ml-[96px] h-[220px] w-[162px] rotate-[-8deg] sm:-ml-[128px] sm:h-[288px] sm:w-[216px] lg:-ml-[136px] lg:h-[315px] lg:w-[235px]"
+      "z-10 left-[calc(57%_-_81px)] top-[calc(48%_-_110px)] h-[220px] w-[162px] rotate-[-8deg] sm:left-[calc(57%_-_108px)] sm:top-[calc(48%_-_144px)] sm:h-[288px] sm:w-[216px] lg:left-[calc(57%_-_118px)] lg:top-[calc(48%_-_158px)] lg:h-[315px] lg:w-[235px]"
   },
   {
     src: "/images/hoadatviet/hdv1.jpg",
     alt: "Các nhân vật rối nước trong vở Hoa Đất Việt",
     className:
-      "z-30 left-1/2 top-[15%] -ml-[42px] h-[182px] w-[148px] rotate-[5deg] sm:-ml-[56px] sm:h-[235px] sm:w-[192px] lg:-ml-[60px] lg:h-[258px] lg:w-[205px]"
+      "z-30 left-[calc(58%_-_74px)] top-[calc(47%_-_91px)] h-[182px] w-[148px] rotate-[5deg] sm:left-[calc(58%_-_96px)] sm:top-[calc(47%_-_118px)] sm:h-[235px] sm:w-[192px] lg:left-[calc(58%_-_103px)] lg:top-[calc(47%_-_129px)] lg:h-[258px] lg:w-[205px]"
   },
   {
     src: "/images/hoadatviet/hdv2.jpg",
     alt: "Rối nước cưỡi linh vật trên mặt nước",
     className:
-      "z-20 left-1/2 top-[23%] -ml-[70px] h-[190px] w-[142px] rotate-[9deg] sm:-ml-[88px] sm:h-[252px] sm:w-[184px] lg:-ml-[92px] lg:h-[268px] lg:w-[195px]"
+      "z-20 left-[calc(56%_-_71px)] top-[calc(49%_-_95px)] h-[190px] w-[142px] rotate-[9deg] sm:left-[calc(56%_-_92px)] sm:top-[calc(49%_-_126px)] sm:h-[252px] sm:w-[184px] lg:left-[calc(56%_-_98px)] lg:top-[calc(49%_-_134px)] lg:h-[268px] lg:w-[195px]"
   },
   {
     src: "/images/hoadatviet/hdv4.jpg",
     alt: "Đoàn rối nước biểu diễn trong khói sân khấu",
     className:
-      "z-40 left-1/2 top-[39%] -ml-[118px] h-[128px] w-[228px] rotate-[-3deg] sm:-ml-[154px] sm:h-[162px] sm:w-[300px] lg:-ml-[166px] lg:h-[176px] lg:w-[332px]"
+      "z-40 left-[calc(57%_-_114px)] top-[calc(50%_-_64px)] h-[128px] w-[228px] rotate-[-3deg] sm:left-[calc(57%_-_150px)] sm:top-[calc(50%_-_81px)] sm:h-[162px] sm:w-[300px] lg:left-[calc(57%_-_166px)] lg:top-[calc(50%_-_88px)] lg:h-[176px] lg:w-[332px]"
   }
 ];
 
@@ -72,13 +72,13 @@ export function HoaDatVietSection() {
         </motion.div>
       </div>
 
-      <div className="relative z-20 mx-auto mt-1 grid max-w-4xl gap-6 pb-24 text-sm font-semibold leading-6 text-deepGreen drop-shadow-[0_0_10px_rgba(255,255,255,0.95)] sm:grid-cols-2 sm:pb-32 md:text-[15px]">
-        <p className="max-w-md [text-shadow:0_1px_10px_rgba(255,255,255,0.95)] sm:justify-self-end">
+      <div className="relative z-20 mx-auto mt-1 grid max-w-4xl gap-6 pb-24 text-sm font-semibold leading-6 text-deepGreen drop-shadow-[0_0_18px_rgba(255,255,255,1)] sm:grid-cols-2 sm:pb-32 md:text-[15px]">
+        <p className="max-w-md [text-shadow:0_2px_0_rgba(255,255,255,1),0_0_18px_rgba(255,255,255,1),0_0_36px_rgba(255,255,255,0.95)] sm:justify-self-end">
           Hoa Đất Việt là chương trình nghệ thuật tái hiện và tôn vinh giá trị văn hoá truyền thống Việt Nam theo chủ
           đề ba miền Bắc - Trung - Nam. Thông qua ngôn ngữ sân khấu giàu tính biểu cảm, vở diễn khắc họa nét đặc trưng
           của từng vùng đất, phản ánh chiều sâu văn hoá dân tộc một cách tinh tế và gần gũi.
         </p>
-        <p className="max-w-md [text-shadow:0_1px_10px_rgba(255,255,255,0.95)]">
+        <p className="max-w-md [text-shadow:0_2px_0_rgba(255,255,255,1),0_0_18px_rgba(255,255,255,1),0_0_36px_rgba(255,255,255,0.95)]">
           Điểm nổi bật của chương trình là việc lồng ghép các trò chơi dân gian, được lựa chọn ngẫu nhiên theo chủ đề
           văn hoá của từng ngày biểu diễn, tạo nên sự khác biệt và mới mẻ cho mỗi đêm diễn.
         </p>

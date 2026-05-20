@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { MinusCircle } from "lucide-react";
-import type { ContactInfo } from "@/types/booking";
 import { seatPrice } from "@/data/seats";
-import { formatCurrency } from "@/lib/format";
 import { cn } from "@/lib/cn";
+import { formatCurrency } from "@/lib/format";
+import type { ContactInfo } from "@/types/booking";
 
 type ContactInfoStepProps = {
   selectedSeats: string[];
@@ -28,19 +28,19 @@ export function ContactInfoStep({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -18 }}
       transition={{ duration: 0.35 }}
-      className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.92fr_1.08fr]"
+      className="mx-auto grid max-w-6xl gap-4 lg:grid-cols-[0.86fr_1.14fr]"
     >
       <div className="border border-deepGreen/60">
         <PanelTitle>Danh sách ghế</PanelTitle>
-        <div className="p-5 sm:p-7">
+        <div className="p-3 sm:p-4">
           <div className="overflow-x-auto">
-            <table className="w-full min-w-[420px] border-collapse text-center text-sm">
+            <table className="w-full min-w-[360px] border-collapse text-center text-xs">
               <thead>
                 <tr className="bg-lightGray font-bold">
-                  <th className="border border-deepGreen/45 px-3 py-4">#</th>
-                  <th className="border border-deepGreen/45 px-3 py-4">Số ghế</th>
-                  <th className="border border-deepGreen/45 px-3 py-4">Số tiền</th>
-                  <th className="border border-deepGreen/45 px-3 py-4">
+                  <th className="border border-deepGreen/45 px-2 py-2">#</th>
+                  <th className="border border-deepGreen/45 px-2 py-2">Số ghế</th>
+                  <th className="border border-deepGreen/45 px-2 py-2">Số tiền</th>
+                  <th className="border border-deepGreen/45 px-2 py-2">
                     <span className="sr-only">Thao tác</span>
                   </th>
                 </tr>
@@ -48,24 +48,24 @@ export function ContactInfoStep({
               <tbody>
                 {selectedSeats.map((seat, index) => (
                   <tr key={seat} className="bg-white">
-                    <td className="border border-deepGreen/35 px-3 py-4">{index + 1}</td>
-                    <td className="border border-deepGreen/35 px-3 py-4">{seat}</td>
-                    <td className="border border-deepGreen/35 px-3 py-4">{formatCurrency(seatPrice)}</td>
-                    <td className="border border-deepGreen/35 px-3 py-4">
+                    <td className="border border-deepGreen/35 px-2 py-2">{index + 1}</td>
+                    <td className="border border-deepGreen/35 px-2 py-2">{seat}</td>
+                    <td className="border border-deepGreen/35 px-2 py-2">{formatCurrency(seatPrice)}</td>
+                    <td className="border border-deepGreen/35 px-2 py-2">
                       <button
                         type="button"
                         aria-label={`Bỏ ghế ${seat}`}
                         onClick={() => onRemoveSeat(seat)}
-                        className="focus-ring inline-grid h-8 w-8 place-items-center rounded-full text-deepGreen hover:bg-paleMint"
+                        className="focus-ring inline-grid h-6 w-6 place-items-center rounded-full text-deepGreen hover:bg-paleMint"
                       >
-                        <MinusCircle className="h-4 w-4" />
+                        <MinusCircle className="h-3.5 w-3.5" />
                       </button>
                     </td>
                   </tr>
                 ))}
                 {selectedSeats.length === 0 && (
                   <tr>
-                    <td colSpan={4} className="border border-deepGreen/35 px-3 py-8 text-deepGreen/70">
+                    <td colSpan={4} className="border border-deepGreen/35 px-2 py-5 text-deepGreen/70">
                       Chưa chọn ghế
                     </td>
                   </tr>
@@ -78,7 +78,7 @@ export function ContactInfoStep({
 
       <div className="border border-deepGreen/60">
         <PanelTitle>Thông tin liên hệ</PanelTitle>
-        <div className="grid gap-4 p-5 sm:p-7">
+        <div className="grid gap-2.5 p-3 sm:p-4">
           <Field label="Tên đầy đủ" error={errors.fullName}>
             <input
               value={contactInfo.fullName}
@@ -119,14 +119,14 @@ export function ContactInfoStep({
             </select>
           </Field>
           <Field
-            label="Yêu cầu khác của bạn"
-            note="*Chúng tôi cam kết bảo mật tất cả các thông tin cá nhân của khách hàng"
+            label="Yêu cầu khác"
+            note="*Chúng tôi cam kết bảo mật tất cả thông tin cá nhân của khách hàng"
           >
             <textarea
               value={contactInfo.note}
               onChange={(event) => onContactChange("note", event.target.value)}
               placeholder="Chúng tôi sẽ nỗ lực đáp ứng các yêu cầu của bạn nếu có thể"
-              className={cn(inputClass(), "min-h-[120px] resize-none py-3")}
+              className={cn(inputClass(), "min-h-[74px] resize-none py-2")}
             />
           </Field>
         </div>
@@ -137,8 +137,8 @@ export function ContactInfoStep({
 
 function PanelTitle({ children }: { children: string }) {
   return (
-    <div className="border-b border-deepGreen/45 bg-lightGray px-5 py-5 text-center">
-      <h2 className="heading-display text-[clamp(2rem,4.2vw,4.2rem)] text-deepGreen">{children}</h2>
+    <div className="border-b border-deepGreen/45 bg-lightGray px-4 py-3 text-center">
+      <h2 className="heading-display text-[clamp(1.35rem,3vw,2.6rem)] text-deepGreen">{children}</h2>
     </div>
   );
 }
@@ -156,12 +156,12 @@ function Field({
 }) {
   const id = label.toLowerCase().replaceAll(" ", "-");
   return (
-    <label htmlFor={id} className="grid gap-2 text-sm font-bold text-deepGreen sm:grid-cols-[150px_1fr] sm:items-start">
-      <span className="pt-2">{label}:</span>
+    <label htmlFor={id} className="grid gap-1.5 text-xs font-bold text-deepGreen sm:grid-cols-[130px_1fr] sm:items-start">
+      <span className="pt-1.5">{label}:</span>
       <span>
         {children}
-        {note && <span className="mt-1 block text-[11px] font-normal italic text-deepGreen/75">{note}</span>}
-        {error && <span className="mt-1 block text-[11px] text-redSon">{error}</span>}
+        {note && <span className="mt-0.5 block text-[10px] font-normal italic text-deepGreen/75">{note}</span>}
+        {error && <span className="mt-0.5 block text-[10px] text-redSon">{error}</span>}
       </span>
     </label>
   );
@@ -169,7 +169,7 @@ function Field({
 
 function inputClass(error?: string) {
   return cn(
-    "focus-ring w-full border bg-white px-4 py-3 text-sm font-normal text-deepGreen outline-none placeholder:text-deepGreen/40",
+    "focus-ring w-full border bg-white px-3 py-2 text-xs font-normal text-deepGreen outline-none placeholder:text-deepGreen/40",
     error ? "border-redSon" : "border-deepGreen/40"
   );
 }

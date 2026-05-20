@@ -2,7 +2,7 @@
 
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import type { MouseEvent as ReactMouseEvent, ReactNode } from "react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { cn } from "@/lib/cn";
 
 export function DraggableCardContainer({ className, children }: { className?: string; children: ReactNode }) {
@@ -13,6 +13,7 @@ export function DraggableCardBody({ className, children }: { className?: string;
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
   const cardRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(false);
 
   const springConfig = {
     stiffness: 100,
@@ -39,27 +40,35 @@ export function DraggableCardBody({ className, children }: { className?: string;
   }
 
   return (
-    <motion.div
-      ref={cardRef}
-      drag
-      dragMomentum
-      dragTransition={{ power: 0.08, timeConstant: 140, restDelta: 0.5 }}
-      onDragStart={() => {
-        document.body.style.cursor = "grabbing";
-      }}
-      onDragEnd={() => {
-        document.body.style.cursor = "default";
-        resetTilt();
-      }}
-      style={{ rotateX, rotateY, opacity, willChange: "transform" }}
-      whileHover={{ scale: 1.045, zIndex: 80 }}
-      whileDrag={{ scale: 1.055, zIndex: 100 }}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={resetTilt}
-      className={cn("relative cursor-grab overflow-hidden rounded-md [transform-style:preserve-3d] active:cursor-grabbing", className)}
-    >
-      {children}
-      <motion.div style={{ opacity: glareOpacity }} className="pointer-events-none absolute inset-0 select-none bg-white" />
-    </motion.div>
+    <div className={cn("absolute", className)} style={active ? { zIndex: 100 } : undefined}>
+      <motion.div
+        ref={cardRef}
+        drag
+        dragMomentum
+        dragTransition={{ power: 0.08, timeConstant: 140, restDelta: 0.5 }}
+        onDragStart={() => {
+          setActive(true);
+          document.body.style.cursor = "grabbing";
+        }}
+        onDragEnd={() => {
+          setActive(false);
+          document.body.style.cursor = "default";
+          resetTilt();
+        }}
+        style={{ rotateX, rotateY, opacity, willChange: "transform" }}
+        whileHover={{ scale: 1.045 }}
+        whileDrag={{ scale: 1.055 }}
+        onMouseEnter={() => setActive(true)}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={() => {
+          setActive(false);
+          resetTilt();
+        }}
+        className="relative h-full w-full cursor-grab overflow-hidden rounded-md [transform-style:preserve-3d] active:cursor-grabbing"
+      >
+        {children}
+        <motion.div style={{ opacity: glareOpacity }} className="pointer-events-none absolute inset-0 select-none bg-white" />
+      </motion.div>
+    </div>
   );
 }

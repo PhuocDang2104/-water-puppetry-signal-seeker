@@ -25,9 +25,9 @@ export function BookingLayout({
   onNext
 }: BookingLayoutProps) {
   return (
-    <main className="min-h-screen bg-white px-3 py-2 text-deepGreen sm:px-5">
+    <main className="min-h-screen bg-white px-3 py-1.5 text-deepGreen sm:px-4">
       <div className="mx-auto max-w-7xl">
-        <div className="relative bg-white px-12 py-2 sm:px-[4.5rem]">
+        <div className="relative bg-white px-12 py-1.5 sm:px-[4.5rem]">
           <button
             type="button"
             onClick={onBack}
@@ -48,15 +48,15 @@ export function BookingLayout({
           >
             {isLastStep ? "Hoàn tất" : <ArrowRight className="h-5 w-5" />}
           </button>
-          <div className="mb-2 text-center">
+          <div className="mb-1.5 text-center">
             <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-gold">Đang đặt vé</p>
-            <h1 className="heading-display mt-0.5 truncate text-[clamp(1.2rem,2.8vw,2.3rem)] text-deepGreen">
+            <h1 className="heading-display mt-0.5 truncate text-[clamp(1rem,2.3vw,1.9rem)] text-deepGreen">
               {showTitle}
             </h1>
           </div>
           <BookingStepper currentStep={currentStep} />
         </div>
-        <div className="pt-3">{children}</div>
+        <div className="pt-2">{children}</div>
       </div>
     </main>
   );

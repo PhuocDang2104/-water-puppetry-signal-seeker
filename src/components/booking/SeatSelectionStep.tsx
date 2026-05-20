@@ -15,7 +15,7 @@ export function SeatSelectionStep({ selectedSeats, onToggleSeat }: SeatSelection
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -18 }}
       transition={{ duration: 0.35 }}
-      className="mx-auto max-w-7xl"
+      className="mx-auto max-w-6xl"
     >
       <SeatMap selectedSeats={selectedSeats} onToggleSeat={onToggleSeat} />
     </motion.section>
