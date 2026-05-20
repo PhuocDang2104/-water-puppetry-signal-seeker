@@ -1,6 +1,8 @@
 import { AboutSection } from "@/components/home/AboutSection";
 import { HeroSection } from "@/components/home/HeroSection";
-import { NewsTrainingAnchors, ServiceIntroSection } from "@/components/home/ReservedSections";
+import { HoaDatVietSection } from "@/components/home/HoaDatVietSection";
+import { ProjectIntroductionSection } from "@/components/home/ProjectIntroductionSection";
+import { AudienceBenefitsSection, NewsTrainingAnchors } from "@/components/home/ReservedSections";
 import { Footer } from "@/components/layout/Footer";
 import { ShowList } from "@/components/shows/ShowList";
 
@@ -8,8 +10,10 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <ProjectIntroductionSection />
       <AboutSection />
-      <ServiceIntroSection />
+      <AudienceBenefitsSection />
+      <HoaDatVietSection />
       <ShowList />
       <NewsTrainingAnchors />
       <Footer />

@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import { HeartHandshake } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -64,13 +65,26 @@ export function Navbar({ variant = "hero" }: NavbarProps) {
         >
           <nav
             className={cn(
-              "mx-auto flex w-[min(96vw,980px)] items-center justify-between gap-2 rounded-full border px-2 py-2 backdrop-blur-xl",
+              "mx-auto flex w-[min(96vw,1120px)] items-center justify-between gap-2 rounded-full border px-2 py-2 backdrop-blur-xl",
               variant === "hero"
                 ? "border-white/30 bg-white/14 text-white shadow-[0_16px_42px_rgba(0,0,0,0.2)]"
                 : "border-deepGreen/18 bg-white/90 text-deepGreen shadow-soft"
             )}
             aria-label="Điều hướng chính"
           >
+            <Link
+              href="/donate"
+              className={cn(
+                "focus-ring group relative ml-1 inline-flex min-h-9 shrink-0 items-center gap-2 overflow-hidden rounded-full px-3 py-2 text-xs font-extrabold transition hover:-translate-y-0.5 sm:px-4",
+                variant === "hero"
+                  ? "bg-gold text-deepGreen shadow-[0_10px_28px_rgba(215,168,63,0.24)]"
+                  : "bg-deepGreen text-white shadow-[0_10px_28px_rgba(13,90,73,0.2)]"
+              )}
+            >
+              <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/45 to-transparent transition duration-700 group-hover:translate-x-full" />
+              <HeartHandshake className="relative h-4 w-4" />
+              <span className="relative hidden sm:inline">Gây quỹ</span>
+            </Link>
             <div className="flex min-w-0 flex-1 items-center justify-center overflow-x-auto">
               <div className="flex min-w-max items-center gap-1">
                 {navItems.map((item) => {

@@ -13,12 +13,12 @@ import { defaultSelectedSeats } from "@/data/seats";
 import { getShowById } from "@/data/shows";
 import type { BookingState, ContactInfo, InvoiceInfo } from "@/types/booking";
 
-const emptyContact: ContactInfo = {
-  fullName: "",
-  email: "",
-  phone: "",
-  nationality: "",
-  note: ""
+const defaultContact: ContactInfo = {
+  fullName: "Nguyễn Văn A",
+  email: "khachhang@example.com",
+  phone: "0901234567",
+  nationality: "Việt Nam",
+  note: "Tôi muốn nhận vé qua email."
 };
 
 const emptyInvoice: InvoiceInfo = {
@@ -36,7 +36,7 @@ export function BookingFlow({ showId }: BookingFlowProps) {
   const router = useRouter();
   const show = useMemo(() => getShowById(showId), [showId]);
   const [currentStep, setCurrentStep] = useState(0);
-  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [acceptedTerms, setAcceptedTerms] = useState(true);
   const [completed, setCompleted] = useState(false);
   const [errors, setErrors] = useState<Partial<Record<keyof ContactInfo, string>>>({});
   const [booking, setBooking] = useState<BookingState>({
@@ -44,7 +44,7 @@ export function BookingFlow({ showId }: BookingFlowProps) {
     selectedDate: "2026-05-23",
     selectedTime: "10:30 - 11:15",
     selectedSeats: defaultSelectedSeats,
-    contactInfo: emptyContact,
+    contactInfo: defaultContact,
     needInvoice: false,
     invoiceInfo: emptyInvoice
   });

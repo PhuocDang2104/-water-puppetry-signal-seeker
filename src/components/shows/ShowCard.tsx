@@ -22,6 +22,13 @@ const englishShows: Record<string, Pick<Show, "title" | "duration" | "cast" | "d
     cast: "Phuong Nam Theatre ensemble",
     description:
       "Flowers of Vietnam gathers traditional water puppet acts with lively music and folk spirit, inviting audiences into a playful and poetic Vietnamese stage world."
+  },
+  "nguyen-trung-truc": {
+    title: "Water Puppet Show: Hero Nguyen Trung Truc",
+    duration: "45 minutes",
+    cast: "Phuong Nam Theatre ensemble",
+    description:
+      "A water puppet work about the life and resistance of Nguyen Trung Truc, combining skilled puppet performance with a stirring story of patriotism and courage."
   }
 };
 
@@ -56,7 +63,7 @@ export function ShowCard({ show, index = 0 }: ShowCardProps) {
         />
       </Link>
       <div>
-        <h2 className="heading-display max-w-4xl text-[clamp(2.2rem,5.2vw,4.6rem)] text-deepGreen">
+        <h2 className="heading-display max-w-4xl text-[clamp(1.9rem,4.4vw,3.85rem)] text-deepGreen">
           {localized.title}
         </h2>
         <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm font-bold italic text-deepGreen">

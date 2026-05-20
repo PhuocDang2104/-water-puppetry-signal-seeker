@@ -1,5 +1,15 @@
 import type { Show, ShowTime } from "@/types/booking";
 
+const hoaDatVietShow: Show = {
+  id: "hoa-dat-viet",
+  title: "Hoa Đất Việt",
+  duration: "45 phút",
+  cast: "Tập thể diễn viên nhà hát Phương Nam",
+  description:
+    "Hoa Đất Việt là chương trình múa rối nước quy tụ các tiết mục trò diễn cổ truyền hấp dẫn, vui nhộn. Với sự kết hợp tinh tế giữa rối nước đầy màu sắc, vũ đạo ấn tượng và âm nhạc sống động, chương trình đưa khán giả vào một không gian cổ tích mê hoặc và lý thú tại Nhà hát nghệ thuật Phương Nam.",
+  image: "/images/shows/hoa-dat-viet.jpg"
+};
+
 export const shows: Show[] = [
   {
     id: "little-mermaid",
@@ -11,13 +21,13 @@ export const shows: Show[] = [
     image: "/images/shows/little-mermaid.jpg"
   },
   {
-    id: "hoa-dat-viet",
-    title: "Hoa Đất Việt",
+    id: "nguyen-trung-truc",
+    title: "Anh hùng Nguyễn Trung Trực",
     duration: "45 phút",
     cast: "Tập thể diễn viên nhà hát Phương Nam",
     description:
-      "Hoa Đất Việt là chương trình múa rối nước quy tụ các tiết mục trò diễn cổ truyền hấp dẫn, vui nhộn. Với sự kết hợp tinh tế giữa rối nước đầy màu sắc, vũ đạo ấn tượng và âm nhạc sống động, chương trình đưa khán giả vào một không gian cổ tích mê hoặc và lý thú tại Nhà hát nghệ thuật Phương Nam.",
-    image: "/images/shows/hoa-dat-viet.jpg"
+      "Một tác phẩm nghệ thuật đa dạng về hình thức và nội dung, xoay quanh cuộc đời và chiến đấu của Anh hùng Nguyễn Trung Trực - một nhân vật lịch lãm và dũng mãnh trong lịch sử Việt Nam. Vở diễn tập trung vào cuộc đời và chiến đấu của người anh hùng nổi tiếng trong cuộc kháng chiến chống thực dân Pháp ở miền Nam Việt Nam, kết hợp kỹ thuật điêu luyện của diễn viên rối nước với sức lôi cuốn của câu chuyện để tạo nên một trải nghiệm nghệ thuật độc đáo, giàu tinh thần yêu nước.",
+    image: "/images/shows/nguyentrungtruc.jpg"
   }
 ];
 
@@ -27,5 +37,5 @@ export const showTimes: ShowTime[] = [
 ];
 
 export function getShowById(showId: string) {
-  return shows.find((show) => show.id === showId) ?? shows[1];
+  return [...shows, hoaDatVietShow].find((show) => show.id === showId) ?? shows[1];
 }

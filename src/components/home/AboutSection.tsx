@@ -18,10 +18,10 @@ export function AboutSection() {
   const { dict } = useLanguage();
 
   return (
-    <section id="about" className="relative overflow-hidden bg-white py-16 sm:py-24">
+    <section id="about" className="relative overflow-hidden bg-white py-12 sm:py-16">
       <SectionHeader marker="A" label={dict.section.about} />
       <DottedPath />
-      <div className="relative z-10 mx-auto mt-16 grid max-w-6xl gap-12 px-5">
+      <div className="relative z-10 mx-auto mt-10 grid max-w-6xl gap-8 px-5">
         {dict.about.map((item, index) => {
           const asset = media[index];
 
@@ -34,14 +34,14 @@ export function AboutSection() {
               viewport={{ once: true, margin: "-120px" }}
               transition={{ duration: 0.62, delay: index * 0.08 }}
               className={cn(
-                "grid items-stretch gap-6 lg:grid-cols-2",
+                "grid items-stretch gap-5 lg:grid-cols-2",
                 asset.reverse && "lg:[&_.about-image]:order-2"
               )}
             >
               <motion.div
                 whileHover={{ y: -5, scale: 1.01 }}
                 transition={{ type: "spring", stiffness: 230, damping: 22 }}
-                className="about-image min-h-[300px] overflow-hidden rounded-sm shadow-poster sm:min-h-[360px]"
+                className="about-image min-h-[240px] overflow-hidden rounded-sm shadow-poster sm:min-h-[300px]"
               >
                 <Image
                   src={asset.image}
@@ -54,13 +54,13 @@ export function AboutSection() {
               <motion.div
                 whileHover={{ y: -5 }}
                 transition={{ type: "spring", stiffness: 230, damping: 22 }}
-                className="min-h-[300px] overflow-hidden rounded-lg border border-deepGreen/35 bg-[linear-gradient(135deg,#eef5f1_0%,#dce7e2_52%,#f8f4e8_100%)] p-6 shadow-soft sm:min-h-[360px] md:p-10"
+                className="min-h-[240px] overflow-hidden rounded-lg border border-deepGreen/35 bg-[linear-gradient(135deg,#eef5f1_0%,#dce7e2_52%,#f8f4e8_100%)] p-5 shadow-soft sm:min-h-[300px] md:p-8"
               >
                 <div className="flex h-full flex-col justify-center">
-                  <h2 className="heading-display max-w-[660px] text-[clamp(2rem,4.4vw,4.4rem)] text-deepGreen">
+                  <h2 className="heading-display max-w-[620px] text-[clamp(1.55rem,3.4vw,3.2rem)] text-deepGreen">
                     {item.title}
                   </h2>
-                  <p className="mt-6 max-w-[650px] text-sm leading-6 text-deepGreen md:text-base md:leading-7">
+                  <p className="mt-4 max-w-[620px] text-[13px] leading-6 text-deepGreen md:text-sm md:leading-6">
                     {item.body}
                   </p>
                 </div>
