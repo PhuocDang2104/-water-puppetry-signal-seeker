@@ -1,9 +1,9 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
+import { AfterPaidFlow } from "@/components/booking/AfterPaidFlow";
 import { BookingLayout } from "@/components/booking/BookingLayout";
 import { ContactInfoStep } from "@/components/booking/ContactInfoStep";
 import { DateSelectionStep } from "@/components/booking/DateSelectionStep";
@@ -37,7 +37,7 @@ export function BookingFlow({ showId }: BookingFlowProps) {
   const show = useMemo(() => getShowById(showId), [showId]);
   const [currentStep, setCurrentStep] = useState(0);
   const [acceptedTerms, setAcceptedTerms] = useState(true);
-  const [completed, setCompleted] = useState(false);
+  const [afterPaid, setAfterPaid] = useState(false);
   const [errors, setErrors] = useState<Partial<Record<keyof ContactInfo, string>>>({});
   const [booking, setBooking] = useState<BookingState>({
     showId,
@@ -100,7 +100,6 @@ export function BookingFlow({ showId }: BookingFlowProps) {
       router.push("/#shows");
       return;
     }
-    setCompleted(false);
     setCurrentStep((step) => step - 1);
   }
 
@@ -108,10 +107,9 @@ export function BookingFlow({ showId }: BookingFlowProps) {
     if (currentStep === 2 && !validateContact()) return;
     if (currentStep === 3) {
       if (!acceptedTerms) return;
-      setCompleted(true);
+      setAfterPaid(true);
       return;
     }
-    setCompleted(false);
     setCurrentStep((step) => Math.min(step + 1, 3));
   }
 
@@ -119,6 +117,10 @@ export function BookingFlow({ showId }: BookingFlowProps) {
     (currentStep === 0 && (!booking.selectedDate || !booking.selectedTime)) ||
     (currentStep === 1 && booking.selectedSeats.length === 0) ||
     (currentStep === 3 && (!acceptedTerms || booking.selectedSeats.length === 0));
+
+  if (afterPaid) {
+    return <AfterPaidFlow show={show} />;
+  }
 
   return (
     <BookingLayout
@@ -129,17 +131,6 @@ export function BookingFlow({ showId }: BookingFlowProps) {
       onBack={goBack}
       onNext={goNext}
     >
-      {completed && (
-        <motion.div
-          initial={{ opacity: 0, y: -12 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mx-auto mb-5 flex max-w-3xl items-center justify-center gap-3 rounded-full bg-paleMint px-5 py-3 text-center text-sm font-bold text-deepGreen"
-        >
-          <CheckCircle2 className="h-5 w-5 text-gold" />
-          Đã ghi nhận thông tin thanh toán mẫu. Vé sẽ được gửi đến email sau khi thanh toán thành công.
-        </motion.div>
-      )}
-
       <AnimatePresence mode="wait">
         <motion.div
           key={currentStep}
